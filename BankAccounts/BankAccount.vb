@@ -1,9 +1,12 @@
-﻿Public Class BankAccount
+﻿Imports System.Text
+Public Class BankAccount
     ''' <summary>
     '''        Bank account
     ''' </summary>
     ''' <author> Tom K </author>
     ''' <date>17/05/2020</date>
+
+
 
     Private AcountHolder As String
     Private AcountNumber As String
@@ -104,5 +107,16 @@
         Return Nothing
     End Function
 
+    Public Overrides Function ToString() As String
+        Dim OutPut As New StringBuilder
+        OutPut.Append(Me.Country & vbCrLf)
+        OutPut.Append(Me.AcountNumber & vbCrLf)
+        OutPut.Append(Me.AcountHolder & vbCrLf)
+        OutPut.Append("Interrest: " & Me.Intrestrate & "%" & vbCrLf)
+        OutPut.Append(Me.Balance & vbCrLf)
+
+
+        Return OutPut.ToString
+    End Function
 
 End Class

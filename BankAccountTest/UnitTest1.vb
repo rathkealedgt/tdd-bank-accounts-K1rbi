@@ -48,7 +48,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         Dim Name As String = Account1.GetAccountHolder()
 
         'assert
-        Assert.AreEqual(Name, "MS  I. N. Cognito")
+        Assert.AreEqual(Name, "Ms  I. N. Cognito")
 
 
     End Sub
@@ -67,7 +67,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
 
 
-    Private Function NewAccount()
+    Private Function NewAccount() 
         Dim AcountHolder As String = "Ms  I. N. Cognito"
         Dim AcountNumber As String = "ABCD 89011 11167890"
         Dim Country As String = "Isle of Man"
@@ -210,4 +210,44 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
 
     End Sub
+
+
+    <TestMethod()> Public Sub TestToStringMethod()
+        'Must print like this : 
+        'Isle of Man + vbcrlf
+        'ABCD 890111 11167890 + vbcrlf
+        'Ms I.N.Cognito + vbcrlf
+        'Interrest: 4.3% + vbcrlf
+        '10343.82 + vbcrlf
+
+        'arrange
+        Dim ExpectedValueString As New StringBuilder()
+
+        ExpectedValueString.Append("Isle of Man" & vbCrLf)
+        ExpectedValueString.Append("ABCD 89011 11167890" & vbCrLf)
+        ExpectedValueString.Append("Ms  I. N. Cognito" & vbCrLf)
+        ExpectedValueString.Append("Interrest: 4.3%" & vbCrLf)
+        ExpectedValueString.Append(10343.82 & vbCrLf)
+        Console.WriteLine(ExpectedValueString)
+        Dim Account1 As BankAccounts.BankAccount = NewAccount2()
+
+        'act
+        Dim ActualString = Account1.ToString()
+        Console.WriteLine(ActualString)
+        'assert
+        Assert.AreEqual(ExpectedValueString.ToString(), ActualString)
+
+
+    End Sub
+
+    Private Function NewAccount2() As BankAccounts.BankAccount
+        Dim AcountHolder As String = "Ms  I. N. Cognito"
+        Dim AcountNumber As String = "ABCD 89011 11167890"
+        Dim Country As String = "Isle of Man"
+
+        Dim Balance As Double = 10343.82
+        Dim IntrestRate As Double = 4.3
+
+        Return New BankAccounts.BankAccount(AcountHolder, AcountNumber, Balance, IntrestRate, Country)
+    End Function
 End Class
