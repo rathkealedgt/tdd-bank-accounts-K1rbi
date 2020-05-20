@@ -119,4 +119,25 @@ Public Class BankAccount
         Return OutPut.ToString
     End Function
 
+    Public Function Deposit(InFlow As Double)
+
+        Me.Balance = Me.Balance + InFlow
+
+        Return Me.Balance
+    End Function
+
+    Public Function Withdraw(OutFlow As Double)
+        Dim OverDraft As String
+        OverDraft = "You do not have enough balance to with drawthis amount in the current acount"
+
+
+        If OutFlow > Me.Balance Then
+            Throw New Exception(OverDraft)
+        End If
+
+        Me.Balance = Me.Balance - OutFlow
+
+        Return Me.Balance
+    End Function
+
 End Class

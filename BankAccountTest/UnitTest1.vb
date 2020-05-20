@@ -250,4 +250,58 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
         Return New BankAccounts.BankAccount(AcountHolder, AcountNumber, Balance, IntrestRate, Country)
     End Function
+
+    <TestMethod()> Public Sub TestDeposit()
+        'arrange
+        Dim Account1 As BankAccounts.BankAccount = NewAccount2()
+        Dim Exspected As Double = 10343.82 + 500
+
+
+        'act
+        Dim ActualValue As Double = Account1.Deposit(500)
+
+
+        'assert
+        Assert.AreEqual(Exspected, ActualValue)
+
+
+    End Sub
+
+
+    <TestMethod()> Public Sub TestWithdraw()
+        'arrange
+        Dim Account1 As BankAccounts.BankAccount = NewAccount2()
+        Dim Exspected As Double = 10343.82 - 500
+
+
+        'act
+        Dim ActualValue As Double = Account1.Withdraw(500)
+
+
+        'assert
+        Assert.AreEqual(Exspected, ActualValue)
+
+
+    End Sub
+    <TestMethod()> Public Sub TestWithdrawLarge()
+        'arrange
+        Dim Account1 As BankAccounts.BankAccount = NewAccount2()
+        Dim Exspected As Double = 10343.82
+
+
+        'act
+
+        Try
+            Dim ActualValue As Double = Account1.Withdraw(100000)
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+
+
+        'assert
+        Assert.AreEqual(Exspected, Account1.Getbalance)
+
+
+    End Sub
 End Class
