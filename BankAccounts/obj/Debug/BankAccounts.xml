@@ -22,6 +22,16 @@ BankAccounts
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:BankAccounts.My.Resources.Resources.download">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BankAccounts.My.Resources.Resources.rac">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="F:BankAccounts.BankAccount.AcountHolder">
  <summary>
         Bank account

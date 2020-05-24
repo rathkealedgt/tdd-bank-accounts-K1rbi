@@ -20,3 +20,4 @@ C:\Users\tomka\Documents\GitHub\tdd-bank-accounts-K1rbi\BankAccounts\obj\Debug\B
 C:\Users\tomka\Documents\GitHub\tdd-bank-accounts-K1rbi\BankAccounts\obj\Debug\BankAccounts.exe
 C:\Users\tomka\Documents\GitHub\tdd-bank-accounts-K1rbi\BankAccounts\obj\Debug\BankAccounts.xml
 C:\Users\tomka\Documents\GitHub\tdd-bank-accounts-K1rbi\BankAccounts\obj\Debug\BankAccounts.pdb
+C:\Users\GGPC\Documents\GitHub\tdd-bank-accounts-K1rbi\BankAccounts\obj\Debug\BankAccounts.BankAccountsForm.resources
