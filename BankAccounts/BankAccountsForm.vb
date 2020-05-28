@@ -1,33 +1,49 @@
 ﻿Public Class BankAccountsForm
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    Private Accounts(4) As BankAccount
+    Private NumAccounts As Integer
+
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        Me.NumAccounts = 0
 
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles LbAccountName.Click
+    Public Function CreatAccount()
+        Dim AccountHolder As String = TxtAccountHolder.Text
+        Dim AccountNumber = TxtAccountNumber.Text
+        Dim InterestRate As Double = CDbl(TxtAccountInterestRate.Text)
+        Dim Balance As Double = CDbl(TxtAccountBalance.Text)
+        Dim Country As String = TxtCountry.Text
 
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles LbAccountNumber.Click
-
-    End Sub
-
-    Private Sub TxtAccountHolder_TextChanged(sender As Object, e As EventArgs) Handles TxtAccountHolder.TextChanged
-
-    End Sub
-
-    Private Sub Label1_Click_1(sender As Object, e As EventArgs) Handles LbAccountDetails.Click
-
-    End Sub
-
-    Private Sub Label1_Click_2(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles BtnPrint.Click
-
-    End Sub
+        Dim NewAccoint As New BankAccount(AccountHolder, AccountNumber, InterestRate, Balance, Country)
+        Me.Accounts(Me.NumAccounts) = NewAccoint
+        Return Nothing
+    End Function
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         End
     End Sub
+
+    Public Function SetTestForTesting(AccountHolder As String, AccountNumber As String, Balance As String, InterestRate As String, Country As String)
+
+        TxtAccountHolder.Text = AccountHolder
+        TxtAccountNumber.Text = AccountNumber
+        TxtAccountBalance.Text = Balance
+        TxtAccountInterestRate.Text = InterestRate
+        TxtCountry.Text = Country
+
+        Return Nothing
+    End Function
+
+
+    Public Function GetAccounts() As BankAccount()
+        Return Me.Accounts
+    End Function
+
 End Class
