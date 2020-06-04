@@ -15,20 +15,23 @@
     End Sub
 
     Public Function CreatAccount()
+
+
+        If TxtAccountHolder.Text = "" Then Throw New Exception("AccountholderRequired")
+        If TxtAccountNumber.Text = "" Then Throw New Exception("AccountNumberRequired")
+        If TxtAccountInterestRate.Text = "" Then Throw New Exception("AccountInterestRateRequired")
+        If TxtAccountBalance.Text = "" Then Throw New Exception("AccountBalanceRequired")
+        If TxtCountry.Text = "" Then Throw New Exception("AccoubtCountryRequired")
+
         Dim AccountHolder As String = TxtAccountHolder.Text
         Dim AccountNumber = TxtAccountNumber.Text
         Dim InterestRate As Double = CDbl(TxtAccountInterestRate.Text)
         Dim Balance As Double = CDbl(TxtAccountBalance.Text)
         Dim Country As String = TxtCountry.Text
 
-        If AccountHolder = "" Then Throw New Exception("AccountholderRequired")
-        If AccountNumber = "" Then Throw New Exception("AccountNumberRequired")
-        If InterestRate = "" Then Throw New Exception("AccountInterestRateRequired")
-        If Balance = "" Then Throw New Exception("AccountBalanceRequired")
-        If Country = "" Then Throw New Exception("AccoubtCountryRequired")
 
-        Dim NewAccoint As New BankAccount(AccountHolder, AccountNumber, InterestRate, Balance, Country)
-        Me.Accounts(Me.NumAccounts) = NewAccoint
+        Dim NewAccount As New BankAccount(AccountHolder, AccountNumber, Balance, InterestRate, Country)
+        Me.Accounts(Me.NumAccounts) = NewAccount
         Return Nothing
     End Function
 

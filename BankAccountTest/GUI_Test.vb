@@ -112,7 +112,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         Dim AcountNumber As String = "ABCD 89011 11167890"
         Dim Country As String = "Isle of Man"
 
-        Dim Balance As String = 1043.82
+        Dim Balance As String = Nothing
         Dim IntrestRate As String = 4.3
 
         Dim BF As New BankAccountsForm()
@@ -138,7 +138,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         Dim AcountNumber As String = "ABCD 89011 11167890"
         Dim Country As String = ""
 
-        Dim Balance As String = Nothing
+        Dim Balance As String = 1043.82
         Dim IntrestRate As String = 4.3
 
         Dim BF As New BankAccountsForm()
@@ -154,6 +154,46 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
             Assert.AreEqual("AccoubtCountryRequired", Ex.Message)
         End Try
 
+
+    End Sub
+
+    <TestMethod()> Public Sub TestAddFiveAccounts()
+
+
+        Dim AcountHolder As String = "Ms  I. N. Cognito"
+        Dim AcountNumber As String = "ABCD 89011 11167890"
+        Dim Country As String = ""
+
+        Dim Balance As String = 1043.82
+        Dim IntrestRate As String = 4.3
+
+        Dim BF As New BankAccountsForm()
+
+        BF.SetTestForTesting(AcountHolder, AcountNumber, Balance, IntrestRate, Country)
+
+        'arrange
+
+        ' act
+
+        Try
+
+            For Counter As Integer = 0 To 4
+                BF.SetTestForTesting(Counter & "_" & AcountHolder, AcountNumber, Balance, IntrestRate, Country)
+                BF.CreatAccount()
+            Next Counter
+
+        Catch ex As Exception
+
+            Assert.Fail()
+
+        End Try
+
+
+        Dim TempAccounts() As BankAccount = Bf.GetAccounts
+
+        For Each Ba In TempAccounts
+            If Ba Is Nothing Then Assert.Fail()
+        Next
 
     End Sub
 
