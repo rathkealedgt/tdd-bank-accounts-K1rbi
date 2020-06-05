@@ -22,6 +22,7 @@
         If TxtAccountInterestRate.Text = "" Then Throw New Exception("AccountInterestRateRequired")
         If TxtAccountBalance.Text = "" Then Throw New Exception("AccountBalanceRequired")
         If TxtCountry.Text = "" Then Throw New Exception("AccoubtCountryRequired")
+        If Me.NumAccounts > 4 Then Throw New Exception("MaxumumACcountsReachedException")
 
         Dim AccountHolder As String = TxtAccountHolder.Text
         Dim AccountNumber = TxtAccountNumber.Text
@@ -32,6 +33,10 @@
 
         Dim NewAccount As New BankAccount(AccountHolder, AccountNumber, Balance, InterestRate, Country)
         Me.Accounts(Me.NumAccounts) = NewAccount
+        Me.NumAccounts += 1
+
+
+
         Return Nothing
     End Function
 

@@ -162,7 +162,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
         Dim AcountHolder As String = "Ms  I. N. Cognito"
         Dim AcountNumber As String = "ABCD 89011 11167890"
-        Dim Country As String = ""
+        Dim Country As String = "Isle of Man"
 
         Dim Balance As String = 1043.82
         Dim IntrestRate As String = 4.3
@@ -195,6 +195,39 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
             If Ba Is Nothing Then Assert.Fail()
         Next
 
+    End Sub
+
+    <TestMethod()> Public Sub TestCanNOtAddSixAccounts()
+
+        'arrange
+        Dim AcountHolder As String = "Ms  I. N. Cognito"
+        Dim AcountNumber As String = "ABCD 89011 11167890"
+        Dim Country As String = "Isle of Man"
+
+        Dim Balance As String = 1043.82
+        Dim IntrestRate As String = 4.3
+
+        Dim BF As New BankAccountsForm()
+
+
+        ' act
+
+        Try
+
+            For Counter As Integer = 0 To 5
+                BF.SetTestForTesting(Counter & "_" & AcountHolder, AcountNumber, Balance, IntrestRate, Country)
+                BF.CreatAccount()
+            Next Counter
+
+            'assert
+            Assert.Fail()
+
+
+        Catch ex As Exception
+
+            Assert.AreEqual("MaxumumACcountsReachedException", ex.Message())
+
+        End Try
     End Sub
 
 End Class
