@@ -109,11 +109,12 @@ Public Class BankAccount
 
     Public Overrides Function ToString() As String
         Dim OutPut As New StringBuilder
-        OutPut.Append(Me.Country & vbCrLf)
-        OutPut.Append(Me.AcountNumber & vbCrLf)
-        OutPut.Append(Me.AcountHolder & vbCrLf)
-        OutPut.Append("Interrest: " & Me.Intrestrate & "%" & vbCrLf)
-        OutPut.Append(Me.Balance & vbCrLf)
+
+        OutPut.Append("Account holder: " & Me.AcountHolder & vbCrLf)
+        OutPut.Append("Country: " & Me.Country & vbCrLf)
+        OutPut.Append("Account Number: " & Me.AcountNumber & vbCrLf)
+        OutPut.Append("Interest rate: " & Me.Intrestrate & "%" & vbCrLf)
+        OutPut.Append("$" & Me.Balance & vbCrLf)
 
 
         Return OutPut.ToString

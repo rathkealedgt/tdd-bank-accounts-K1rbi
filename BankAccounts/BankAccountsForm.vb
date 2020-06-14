@@ -37,6 +37,12 @@ Public Class BankAccountsForm
         Me.Accounts(Me.NumAccounts) = NewAccount
         Me.NumAccounts += 1
 
+        'clearing txt boxes
+        TxtAccountHolder.Clear()
+        TxtAccountNumber.Clear()
+        TxtAccountInterestRate.Clear()
+        TxtAccountBalance.Clear()
+        TxtCountry.Clear()
 
 
         Return Nothing
@@ -121,4 +127,5 @@ Public Class BankAccountsForm
 
 
     End Sub
+
 End Class
